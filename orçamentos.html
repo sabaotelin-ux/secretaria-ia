@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orçamentos - Secretária IA Pro</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-50 font-sans min-h-screen">
+
+    <div class="max-w-3xl mx-auto px-4 py-8">
+
+        <!-- Cabeçalho -->
+        <header class="bg-white rounded-2xl shadow-sm border border-slate-100 p-5 mb-6 flex justify-between items-center">
+            <div>
+                <h1 class="text-xl font-bold text-slate-900">Gerador de Orçamentos</h1>
+                <p class="text-sm text-slate-500">Crie propostas profissionais rapidamente</p>
+            </div>
+            <a href="dashboard.html" class="text-indigo-600 text-sm font-medium hover:underline">
+                ← Voltar
+            </a>
+        </header>
+
+        <!-- Formulário -->
+        <div class="bg-white rounded-2xl border border-slate-100 shadow-sm p-5 mb-6">
+            <h2 class="font-bold text-slate-900 mb-4">Novo Orçamento</h2>
+            
+            <div class="space-y-3">
+                <input type="text" id="cliente" placeholder="Nome do cliente" 
+                    class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-indigo-500 focus:outline-none">
+                
+                <textarea id="descricao" placeholder="Descrição do serviço (ex: Consultoria de marketing, 10 horas)" rows="3"
+                    class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-indigo-500 focus:outline-none resize-none"></textarea>
+                
+                <div class="grid grid-cols-2 gap-3">
+                    <input
