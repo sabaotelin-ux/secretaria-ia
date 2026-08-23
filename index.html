@@ -3,67 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Secretária IA Pro</title>
+    <title>Login - Secretaria IA Pro</title>
     <style>
         * { box-sizing: border-box; }
         body {
             margin: 0;
             padding: 20px;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             background-color: #f4f6fb;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
         }
-        .card {
-            background: #ffffff;
-            padding: 30px 20px;
+        .login-card {
+            background: white;
+            padding: 30px;
             border-radius: 16px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
             width: 100%;
             max-width: 400px;
             text-align: center;
         }
-        h1 { color: #1e3a8a; font-size: 22px; margin-bottom: 8px; }
-        p { color: #4b5563; font-size: 13px; margin-bottom: 24px; }
+        h2 { color: #1e3a8a; margin-bottom: 5px; }
+        p { color: #6b7280; font-size: 14px; margin-bottom: 25px; }
         input {
             width: 100%;
             padding: 12px;
-            margin-bottom: 12px;
+            margin-bottom: 15px;
             border: 1px solid #d1d5db;
             border-radius: 8px;
             font-size: 14px;
         }
         .btn {
-            display: block;
             width: 100%;
-            background-color: #2563eb;
-            color: #ffffff;
             padding: 12px;
+            background-color: #2563eb;
+            color: white;
             border: none;
             border-radius: 8px;
             font-weight: bold;
-            font-size: 14px;
+            font-size: 15px;
             cursor: pointer;
-            text-decoration: none;
-            text-align: center;
         }
         .btn:hover { background-color: #1d4ed8; }
     </style>
 </head>
 <body>
 
-    <div class="card">
-        <h1>Secretária IA Pro</h1>
-        <p>Faça login para acessar o painel</p>
+    <div class="login-card">
+        <h2>Secretaria IA Pro</h2>
+        <p>Faca login para acessar o painel</p>
         
-        <form action="painel.html" method="GET">
-            <input type="email" placeholder="Seu e-mail" required>
-            <input type="password" placeholder="Sua senha" required>
-            <button type="submit" class="btn">Entrar</button>
-        </form>
+        <input type="email" id="email" placeholder="Seu e-mail">
+        <input type="password" id="senha" placeholder="Sua senha">
+        <button class="btn" onclick="fazerLogin()">Entrar</button>
     </div>
+
+    <script>
+        function fazerLogin() {
+            const email = document.getElementById('email').value;
+            const senha = document.getElementById('senha').value;
+
+            if(!email || !senha) {
+                alert('Por favor, preencha o e-mail e a senha!');
+                return;
+            }
+
+            // Redireciona corretamente para o painel na mesma pasta
+            window.location.href = 'painel.html';
+        }
+    </script>
 
 </body>
 </html>
+
