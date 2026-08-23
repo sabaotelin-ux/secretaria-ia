@@ -1,73 +1,56 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Login - Secretária IA Pro</title>
-
-<style>
-body{
-    font-family: Arial, sans-serif;
-    background:#f4f6f9;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    height:100vh;
-    margin:0;
-}
-
-.card{
-    background:white;
-    padding:30px;
-    border-radius:15px;
-    width:320px;
-    box-shadow:0 0 15px rgba(0,0,0,0.1);
-}
-
-h1{
-    text-align:center;
-    color:#2563eb;
-}
-
-input{
-    width:100%;
-    padding:12px;
-    margin-top:10px;
-    border:1px solid #ccc;
-    border-radius:8px;
-    box-sizing:border-box;
-}
-
-button{
-    width:100%;
-    padding:12px;
-    margin-top:15px;
-    border:none;
-    border-radius:8px;
-    background:#2563eb;
-    color:white;
-    font-size:16px;
-}
-
-p{
-    text-align:center;
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Secretária IA Pro</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
+<body class="bg-slate-50 flex items-center justify-center min-h-screen font-sans">
 
-<body>
+    <div class="bg-white p-8 rounded-2xl shadow-xl w-full max-w-md mx-4">
+        <!-- Cabeçalho do Card -->
+        <div class="text-center mb-8">
+            <a href="index.html" class="text-2xl font-bold text-indigo-600 block mb-2">🤖 Secretária IA Pro</a>
+            <h1 class="text-xl font-bold text-slate-900">Acesse sua conta</h1>
+            <p class="text-sm text-slate-500 mt-1">Entre para gerenciar sua assistente virtual</p>
+        </div>
 
-<div class="card">
-    <h1>Secretária IA Pro</h1>
+        <!-- Formulário de Login -->
+        <form onsubmit="fazerLogin(event)" class="space-y-4">
+            <div>
+                <label class="block text-sm font-medium text-slate-700 mb-1">E-mail</label>
+                <input type="email" required placeholder="seu@email.com" 
+                    class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-indigo-500 focus:outline-none transition">
+            </div>
 
-    <input type="email" placeholder="E-mail">
+            <div>
+                <label class="block text-sm font-medium text-slate-700 mb-1">Senha</label>
+                <input type="password" required placeholder="••••••••" 
+                    class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-indigo-500 focus:outline-none transition">
+            </div>
 
-    <input type="password" placeholder="Senha">
+            <button type="submit" 
+                class="w-full bg-indigo-600 text-white font-semibold py-3 rounded-lg hover:bg-indigo-700 transition shadow-md">
+                Entrar no Painel
+            </button>
+        </form>
 
-    <button>Entrar</button>
+        <!-- Voltar para o início -->
+        <div class="text-center mt-6">
+            <a href="index.html" class="text-sm text-indigo-600 hover:underline">← Voltar para a página inicial</a>
+        </div>
+    </div>
 
-    <p>Criar conta</p>
-</div>
+    <script>
+        function fazerLogin(event) {
+            event.preventDefault(); // Evita recarregar a página
+            // Redireciona para o painel de controle
+            window.location.href = "painel.html";
+        }
+    </script>
 
 </body>
 </html>
+
