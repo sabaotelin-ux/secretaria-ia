@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clientes - Secretária IA Pro</title>
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+    background:#f4f4f4;
+    margin:0;
+    padding:20px;
+}
+
+.container{
+    max-width:900px;
+    margin:auto;
+    background:white;
+    padding:20px;
+    border-radius:10px;
+}
+
+h1{
+    text-align:center;
+}
+
+input{
+    width:100%;
+    padding:12px;
+    margin:8px 0;
+    border:1px solid #ccc;
+    border-radius:6px;
+}
+
+button{
+    background:#28a745;
+    color:white;
+    border:none;
+    padding:12px 20px;
+    border-radius:6px;
+    cursor:pointer;
+}
+
+table{
+    width:100%;
+    margin-top:20px;
+    border-collapse:collapse;
+}
+
+th, td{
+    border:1px solid #ddd;
+    padding:10px;
+    text-align:left;
+}
+
+th{
+    background:#28a745;
+    color:white;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Clientes</h1>
+
+<input type="text" id="nome" placeholder="Nome do Cliente">
+
+<input type="text" id="telefone" placeholder="Telefone">
+
+<input type="email" id="email" placeholder="E-mail">
+
+<button onclick="adicionarCliente()">
+Adicionar Cliente
+</button>
+
+<table>
+<thead>
+<tr>
+<th>Nome</th>
+<th>Telefone</th>
+<th>E-mail</th>
+</tr>
+</thead>
+
+<tbody id="listaClientes">
+</tbody>
+</table>
+
+</div>
+
+<script>
+
+function adicionarCliente(){
+
+let nome = document.getElementById("nome").value;
+let telefone = document.getElementById("telefone").value;
+let email = document.getElementById("email").value;
+
+let tabela = document.getElementById("listaClientes");
+
+tabela.innerHTML += `
+<tr>
+<td>${nome}</td>
+<td>${telefone}</td>
+<td>${email}</td>
+</tr>
+`;
+
+document.getElementById("nome").value="";
+document.getElementById("telefone").value="";
+document.getElementById("email").value="";
+}
+
+</script>
+
+</body>
+</html>
