@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agenda - Secretária IA Pro</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-50 font-sans min-h-screen">
+
+    <div class="max-w-3xl mx-auto px-4 py-8">
+
+        <!-- Cabeçalho -->
+        <header class="bg-white rounded-2xl shadow-sm border border-slate-100 p-5 mb-6 flex justify-between items-center">
+            <div>
+                <h1 class="text-xl font-bold text-slate-900">Agenda de Compromissos</h1>
+                <p class="text-sm text-slate-500">Organize seus horários</p>
+            </div>
+            <a href="dashboard.html" class="text-indigo-600 text-sm font-medium hover:underline">
+                ← Voltar
+            </a>
+        </header>
+
+        <!-- Formulário de novo compromisso -->
+        <div class="bg-white rounded-2xl border border-slate-100 shadow-sm p-5 mb-6">
+            <h2 class="font-bold text-slate-900 mb-4">Novo Compromisso</h2>
+            
+            <div class="space-y-3">
+                <input type="text" id="cliente" placeholder="Nome do cliente" 
+                    class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-indigo-500 focus:outline-none">
+                
+                <div class="grid grid-cols-2 gap-3">
+                    <input type="date" id="data" 
+                        class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-indigo-500 focus:outline-none">
+                    
+                    <input type="time" id="hora" 
+                        class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-indigo-500 focus:outline-none">
+                </div>
+
+                <button onclick="adicionarCompromisso()" 
+                    class="w-full bg-indigo-600 text-white font-semibold py-3 rounded-xl hover:bg-indigo-700 transition">
+                    Salvar Agendamento
+                </button>
+            </div>
+        </div>
+
+        <!-- Lista de compromissos -->
+        <div class="bg-white rounded-2xl border border-slate-100 shadow-sm p-5">
+            <h2 class="font-bold text-slate-900 mb-4">Próximos Compromissos</h2>
+            
+            <div id="listaCompromissos" class="space-y-3">
+                <p class="text-slate-500 text-sm" id="mensagemVazia">Nenhum compromisso agendado ainda.</p>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function adicionarCompromisso() {
+            const cliente = document.getElementById('cliente').value.trim();
+            const data = document.getElementById('data').value;
+            const hora = document.getElementById('hora').value;
+
+            if (!cliente || !data || !hora) {
+                alert('Por favor, preencha todos os campos.');
+                return;
+            }
+
+            // Remove a mensagem de vazio
+            const mensagemVazia = document.getElementById('mensagemVazia');
+            if (mensagemVazia) {
+                mensagemVazia.remove();
+            }
+
+            // Formata a data
+            const dataFormatada = new Date(data + 'T00:00:00').toLocaleDateString('pt-BR');
+
+            // Cria o item
+            const lista = document.getElementById('listaCompromissos');
+            const item = document.createElement('div');
+            item.className = 'flex justify-between items-center p-3 bg-slate-50 rounded-xl';
+            item.innerHTML = `
+                <div>
+                    <p class="font-medium text-slate-900">${cliente}</p>
+                    <p class="text-sm text-slate-500">${dataFormatada} às ${hora}</p>
+                </div>
+                <span class="text-xs bg-indigo-100 text-indigo-700 px-2.5 py-1 rounded-full font-medium">Agendado</span>
+            `;
+            lista.appendChild(item);
+
+            // Limpa os campos
+            document.getElementById('cliente').value = '';
+            document.getElementById('data').value = '';
+            document.getElementById('hora').value = '';
+        }
+    </script>
+
+</body>
+</html>
