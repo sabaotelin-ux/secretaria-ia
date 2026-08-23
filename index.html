@@ -3,65 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Secretária IA Pro - Sua empresa atendendo clientes 24h</title>
-    <!-- Tailwind CSS para um design moderno e responsivo -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Secretária IA Pro</title>
+    <style>
+        /* Reseta margens e define o fundo geral */
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f4f6fb;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* Estilo do card centralizado */
+        .card-inicio {
+            background: #ffffff;
+            padding: 30px 20px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            width: 100%;
+            max-width: 380px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #1e3a8a;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: #4b5563;
+            font-size: 14px;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        .btn-teste {
+            display: inline-block;
+            background-color: #2563eb;
+            color: #ffffff;
+            padding: 12px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 14px;
+            transition: background 0.3s;
+            width: 100%;
+        }
+
+        .btn-teste:hover {
+            background-color: #1d4ed8;
+        }
+    </style>
 </head>
-<body class="bg-slate-50 text-slate-800 font-sans antialiased">
+<body>
 
-    <!-- Cabeçalho -->
-    <header class="bg-white shadow-sm sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-            <div class="flex items-center space-x-2">
-                <span class="text-2xl font-bold text-indigo-600">🤖 Secretária IA Pro</span>
-            </div>
-            <div>
-                <a href="login.html" class="text-indigo-600 font-semibold hover:text-indigo-800 transition mr-4">Entrar</a>
-                <a href="login.html" class="bg-indigo-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-indigo-700 transition shadow-sm">Teste Grátis</a>
-            </div>
-        </div>
-    </header>
-
-    <!-- Seção Principal (Hero) -->
-    <section class="max-w-7xl mx-auto px-4 py-20 text-center">
-        <h1 class="text-4xl md:text-6xl font-extrabold text-slate-900 tracking-tight mb-6">
-            Sua empresa atendendo clientes <span class="text-indigo-600">24h por dia</span>
-        </h1>
-        <p class="text-lg md:text-xl text-slate-600 max-w-2xl mx-auto mb-8">
-            Atenda clientes automaticamente pelo WhatsApp, agende compromissos, gere orçamentos e aumente suas vendas com Inteligência Artificial.
-        </p>
-        <div class="flex justify-center space-x-4">
-            <a href="login.html" class="bg-indigo-600 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-indigo-700 transition shadow-lg">
-                Testar Gratuitamente
-            </a>
-        </div>
-    </section>
-
-    <!-- Seção de Benefícios -->
-    <section class="bg-white py-16 border-t border-slate-100">
-        <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-            <div class="p-6 bg-slate-50 rounded-2xl">
-                <div class="text-3xl mb-4">⚡</div>
-                <h3 class="font-bold text-xl mb-2">Respostas Instantâneas</h3>
-                <p class="text-slate-600">Sua secretária virtual responde no WhatsApp em segundos, a qualquer hora do dia ou da noite.</p>
-            </div>
-            <div class="p-6 bg-slate-50 rounded-2xl">
-                <div class="text-3xl mb-4">📅</div>
-                <h3 class="font-bold text-xl mb-2">Agendamento Automático</h3>
-                <p class="text-slate-600">Evite furos e desorganização. A IA marca horários diretamente na agenda da sua empresa.</p>
-            </div>
-            <div class="p-6 bg-slate-50 rounded-2xl">
-                <div class="text-3xl mb-4">📈</div>
-                <h3 class="font-bold text-xl mb-2">Mais Vendas</h3>
-                <p class="text-slate-600">Qualifique leads e faça orçamentos automáticos para nunca mais perder um cliente interessado.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Rodapé -->
-    <footer class="bg-slate-900 text-slate-400 py-8 text-center">
-        <p>&copy; 2026 Secretária IA Pro. Todos os direitos reservados.</p>
-    </footer>
+    <div class="card-inicio">
+        <h1>Secretária IA Pro</h1>
+        <p>Sua empresa atendendo clientes 24h por dia. Atenda clientes automaticamente pelo WhatsApp, agende compromissos, gere orçamentos e aumente suas vendas com Inteligência Artificial.</p>
+        <a href="login.html" class="btn-teste">Testar Gratuitamente</a>
+    </div>
 
 </body>
 </html>
