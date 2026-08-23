@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orçamentos - Secretária IA Pro</title>
+    <style>
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f6fb;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        header {
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        h1 { color: #1e3a8a; font-size: 20px; margin: 0; }
+        .back { color: #2563eb; text-decoration: none; font-size: 14px; font-weight: bold; }
+        
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            margin-bottom: 15px;
+        }
+        h3 { color: #1e3a8a; margin-top: 0; }
+        input, button, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+        textarea { resize: vertical; height: 80px; }
+        .btn {
+            background-color: #2563eb;
+            color: white;
+            border: none;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .btn:hover { background-color: #1d4ed8; }
+        .resultado {
+            background: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            color: #166534;
+            font-size: 14px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Gerador de Orçamentos</h1>
+            <a href="painel.html" class="back">← Voltar</a>
+        </header>
+
+        <div class="card">
+            <h3>Criar Novo Orçamento</h3>
+            <input type="text" id="cliente" placeholder="Nome do Cliente">
+            <textarea id="descricao" placeholder="Descrição do Serviço (ex: Consultoria ou Atendimento)"></textarea>
+            <input type="number" id="quantidade" placeholder="Quantidade / Horas" min="1">
+            <input type="number" id="valor" placeholder="Valor Unitário (R$)" step="0.01">
+            <button class="btn" onclick="gerarOrcamento()">Gerar Orçamento</button>
+
+            <div id="boxResultado" class="resultado">
+                <strong>Orçamento Gerado com Sucesso!</strong><br>
+                <div id="textoOrcamento" style="margin-top: 8px; white-space: pre-line;"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function gerarOrcamento() {
+            const cliente = document.getElementById('cliente').value;
+            const descricao = document.getElementById('descricao').value;
+            const quantidade = parseFloat(document.getElementById('quantidade').value);
+            const valor = parseFloat(document.getElementById('valor').value);
+
+            if(!cliente || !descricao || isNaN(quantidade) || isNaN(valor)) {
+                alert('Por favor, preencha todos os campos corretamente!');
+                return;
+            }
+
+            const total = quantidade * valor;
+            const totalFormatado = total.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+            const valorFormatado = valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+
+            const texto = `Cliente: ${cliente}
+Serviço: ${descricao}
+Qtd/Horas: ${quantidade} x ${valorFormatado}
+-----------------------------------
+VALOR TOTAL: ${totalFormatado}`;
+
+            document.getElementById('textoOrcamento').innerText = texto;
+            document.getElementById('boxResultado').style.display = 'block';
+        }
+    </script>
+
+</body>
+</html>
