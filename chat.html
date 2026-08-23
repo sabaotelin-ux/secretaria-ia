@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat - Secretária IA Pro</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-50 font-sans min-h-screen flex flex-col">
+
+    <div class="max-w-3xl mx-auto w-full px-4 py-6 flex flex-col flex-1">
+
+        <!-- Cabeçalho -->
+        <header class="bg-white rounded-2xl shadow-sm border border-slate-100 p-4 mb-4 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-indigo-100 rounded-full flex items-center justify-center text-xl">🤖</div>
+                <div>
+                    <h1 class="font-bold text-slate-900">Secretária IA</h1>
+                    <p class="text-xs text-green-600">Online</p>
+                </div>
+            </div>
+            <a href="dashboard.html" class="text-indigo-600 text-sm font-medium hover:underline">
+                ← Voltar
+            </a>
+        </header>
+
+        <!-- Área de mensagens -->
+        <div id="chatArea" class="flex-1 bg-white rounded-2xl border border-slate-100 shadow-sm p-4 overflow-y-auto mb-4 space-y-4" style="min-height: 400px; max-height: 500px;">
+            
+            <!-- Mensagem inicial da IA -->
+            <div class="flex gap-3">
+                <div class="w-8 h-8 bg-indigo-100 rounded-full flex items-center justify-center text-sm flex-shrink-0">🤖</div>
+                <div class="bg-slate-100 rounded-2xl rounded-tl-none px-4 py-3 max-w-[80%]">
+                    <p class="text-sm text-slate-800">Olá! Sou a Secretária IA Pro. Como posso ajudar você hoje? Posso agendar compromissos, gerar orçamentos, responder sobre clientes e muito mais.</p>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Campo de digitação -->
+        <div class="
