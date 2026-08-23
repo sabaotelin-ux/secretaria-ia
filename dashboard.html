@@ -5,84 +5,87 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Painel - Secretária IA Pro</title>
     <style>
-        * {
-            box-sizing: border-box;
-        }
-
+        * { box-sizing: border-box; }
         body {
             margin: 0;
             padding: 20px;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             background-color: #f4f6fb;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-
-        .card-painel {
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        header {
             background: #ffffff;
-            padding: 30px 20px;
-            border-radius: 16px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-            width: 100%;
-            max-width: 400px;
-            text-align: center;
-        }
-
-        h1 {
-            color: #1e3a8a;
-            font-size: 22px;
-            margin-bottom: 8px;
-        }
-
-        p {
-            color: #4b5563;
-            font-size: 13px;
-            margin-bottom: 24px;
-        }
-
-        .menu-opcoes {
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
             display: flex;
-            flex-direction: column;
-            gap: 12px;
+            justify-content: space-between;
+            align-items: center;
         }
-
-        .btn-opcao {
-            display: block;
-            background-color: #2563eb;
-            color: #ffffff;
-            padding: 12px;
-            border-radius: 8px;
+        h1 { color: #1e3a8a; font-size: 20px; margin: 0; }
+        .logout { color: #dc2626; text-decoration: none; font-size: 14px; font-weight: bold; }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+        }
+        .card-menu {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
             text-decoration: none;
+            color: #1e3a8a;
             font-weight: bold;
-            font-size: 14px;
-            transition: background 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: 0.2s;
         }
-
-        .btn-opcao:hover {
-            background-color: #1d4ed8;
+        .card-menu:hover {
+            background-color: #eff6ff;
+            transform: translateY(-2px);
         }
-
-        .btn-sair {
-            background-color: #ef4444;
-        }
-
-        .btn-sair:hover {
-            background-color: #dc2626;
-        }
+        .card-menu span { font-size: 22px; }
     </style>
 </head>
 <body>
 
-    <div class="card-painel">
-        <h1>Painel de Controle</h1>
-        <p>Gerencie sua assistente virtual e clientes</p>
-        
-        <div class="menu-opcoes">
-            <!-- Usando links simples e seguros -->
-            <a href="clientes.html" class="btn-opcao">Ver Clientes Atendidos</a>
-            <a href="index.html" class="btn-opcao btn-sair">Sair da Conta</a>
+    <div class="container">
+        <header>
+            <h1>Painel da IA Pro</h1>
+            <a href="index.html" class="logout">Sair</a>
+        </header>
+
+        <div class="grid">
+            <a href="clientes.html" class="card-menu">
+                <div>
+                    <h3>Clientes Atendidos</h3>
+                    <p style="color: #6b7280; font-size: 13px; font-weight: normal; margin: 5px 0 0 0;">Veja o histórico de conversas</p>
+                </div>
+                <span>👥</span>
+            </a>
+
+            <a href="#" class="card-menu" onclick="alert('Módulo de Agendamentos em breve!')">
+                <div>
+                    <h3>Agenda de Compromissos</h3>
+                    <p style="color: #6b7280; font-size: 13px; font-weight: normal; margin: 5px 0 0 0;">Gerencie horários marcados</p>
+                </div>
+                <span>📅</span>
+            </a>
+
+            <a href="#" class="card-menu" onclick="alert('Módulo de Orçamentos em breve!')">
+                <div>
+                    <h3>Gerador de Orçamentos</h3>
+                    <p style="color: #6b7280; font-size: 13px; font-weight: normal; margin: 5px 0 0 0;">Crie propostas automáticas</p>
+                </div>
+                <span>💰</span>
+            </a>
         </div>
     </div>
 
