@@ -1,86 +1,40 @@
-<!DOCTYPE html>
+
+    <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Clientes - Secretária IA Pro</title>
     <style>
-        * {
-            box-sizing: border-box;
-        }
-
         body {
-            margin: 0;
-            padding: 20px;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: #f4f6fb;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        .card-clientes {
-            background: #ffffff;
-            padding: 30px 20px;
-            border-radius: 16px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-            width: 100%;
-            max-width: 420px;
+            background-color: #f4f6fb;
             text-align: center;
-        }
-
-        h1 {
+            padding: 50px 20px;
             color: #1e3a8a;
-            font-size: 22px;
-            margin-bottom: 8px;
         }
-
-        p {
-            color: #4b5563;
-            font-size: 13px;
-            margin-bottom: 20px;
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            max-width: 400px;
+            margin: 0 auto;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
         }
-
-        .lista-vazia {
-            background-color: #f8fafc;
-            border: 1px dashed #cbd5e1;
-            padding: 20px;
-            border-radius: 8px;
-            color: #64748b;
-            font-size: 14px;
-            margin-bottom: 20px;
-        }
-
-        .btn-voltar {
-            display: block;
-            background-color: #2563eb;
-            color: #ffffff;
-            padding: 12px;
-            border-radius: 8px;
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            color: #2563eb;
             text-decoration: none;
             font-weight: bold;
-            font-size: 14px;
-            transition: background 0.3s;
-        }
-
-        .btn-voltar:hover {
-            background-color: #1d4ed8;
         }
     </style>
 </head>
 <body>
-
-    <div class="card-clientes">
+    <div class="container">
         <h1>Clientes Atendidos</h1>
-        <p>Acompanhe os atendimentos realizados pela sua IA</p>
-        
-        <div class="lista-vazia">
-            Nenhum cliente registrado no momento. Os atendimentos do WhatsApp aparecerão aqui em breve!
-        </div>
-
-        <a href="painel.html" class="btn-voltar">← Voltar para o Painel</a>
+        <p>Sua lista de clientes aparecerá aqui em breve.</p>
+        <a href="painel.html">← Voltar para o Painel</a>
     </div>
-
 </body>
 </html>
