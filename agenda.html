@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agenda - Secretária IA Pro</title>
+    <style>
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f6fb;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        header {
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        h1 { color: #1e3a8a; font-size: 20px; margin: 0; }
+        .back { color: #2563eb; text-decoration: none; font-size: 14px; font-weight: bold; }
+        
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            margin-bottom: 15px;
+        }
+        h3 { color: #1e3a8a; margin-top: 0; }
+        input, button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+        .btn {
+            background-color: #2563eb;
+            color: white;
+            border: none;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .btn:hover { background-color: #1d4ed8; }
+        .item-lista {
+            padding: 10px;
+            border-bottom: 1px solid #e5e7eb;
+            font-size: 14px;
+            color: #374151;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Agenda de Compromissos</h1>
+            <a href="painel.html" class="back">← Voltar</a>
+        </header>
+
+        <div class="card">
+            <h3>Agendar Novo Horário</h3>
+            <input type="text" id="cliente" placeholder="Nome do Cliente">
+            <input type="date" id="data">
+            <input type="time" id="hora">
+            <button class="btn" onclick="adicionarCompromisso()">Salvar Agendamento</button>
+        </div>
+
+        <div class="card">
+            <h3>Próximos Compromissos</h3>
+            <div id="listaCompromissos">
+                <div class="item-lista">Nenhum compromisso agendado ainda.</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function adicionarCompromisso() {
+            const cliente = document.getElementById('cliente').value;
+            const data = document.getElementById('data').value;
+            const hora = document.getElementById('hora').value;
+
+            if(!cliente || !data || !hora) {
+                alert('Por favor, preencha todos os campos!');
+                return;
+            }
+
+            const lista = document.getElementById('listaCompromissos');
+            if(lista.innerHTML.includes('Nenhum compromisso')) {
+                lista.innerHTML = '';
+            }
+
+            const novoItem = document.createElement('div');
+            novoItem.className = 'item-lista';
+            novoItem.innerHTML = `<strong>${cliente}</strong> - ${data} às ${hora}`;
+            lista.appendChild(novoItem);
+
+            document.getElementById('cliente').value = '';
+            document.getElementById('data').value = '';
+            document.getElementById('hora').value = '';
+            
+            alert('Compromisso agendado com sucesso!');
+        }
+    </script>
+
+</body>
+</html>
