@@ -21,14 +21,39 @@
             </a>
         </header>
 
-        <!-- Menu de módulos -->
+        <!-- Resumo rápido -->
+        <div class="grid grid-cols-2 gap-4 mb-6">
+            <div class="bg-white rounded-2xl border border-slate-100 p-4 shadow-sm">
+                <p class="text-sm text-slate-500">Compromissos</p>
+                <p id="totalCompromissos" class="text-2xl font-bold text-slate-900 mt-1">0</p>
+            </div>
+            <div class="bg-white rounded-2xl border border-slate-100 p-4 shadow-sm">
+                <p class="text-sm text-slate-500">Orçamentos</p>
+                <p id="totalOrcamentos" class="text-2xl font-bold text-slate-900 mt-1">0</p>
+            </div>
+        </div>
+
+        <!-- Menu -->
         <div class="grid gap-4">
 
-            <!-- Clientes -->
             <a href="clientes.html" class="bg-white p-5 rounded-2xl border border-slate-100 shadow-sm hover:border-indigo-300 hover:shadow-md transition flex justify-between items-center group">
                 <div>
                     <h3 class="font-bold text-slate-900 group-hover:text-indigo-600 transition">Clientes Atendidos</h3>
-                    <p class="text-sm text-slate-500 mt-1">Veja o histórico de conversas e leads</p>
+                    <p class="text-sm text-slate-500 mt-1">Histórico de conversas e leads</p>
                 </div>
                 <span class="text-2xl">👥</span>
-            </a
+            </a>
+
+            <a href="agenda.html" class="bg-white p-5 rounded-2xl border border-slate-100 shadow-sm hover:border-indigo-300 hover:shadow-md transition flex justify-between items-center group">
+                <div>
+                    <h3 class="font-bold text-slate-900 group-hover:text-indigo-600 transition">Agenda de Compromissos</h3>
+                    <p class="text-sm text-slate-500 mt-1">Gerencie horários e reuniões</p>
+                </div>
+                <span class="text-2xl">📅</span>
+            </a>
+
+            <a href="orcamentos.html" class="bg-white p-5 rounded-2xl border border-slate-100 shadow-sm hover:border-indigo-300 hover:shadow-md transition flex justify-between items-center group">
+                <div>
+                    <h3 class="font-bold text-slate-900 group-hover:text-indigo-600 transition">Gerador de Orçamentos</h3>
+                    <p class="text-sm text-slate-500 mt-1">Crie propostas profissionais</p>
+                </
