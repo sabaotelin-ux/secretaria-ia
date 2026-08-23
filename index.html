@@ -1,20 +1,51 @@
-
-<!DOCTYPE html><html>
+<!DOCTYPE html>
+<html>
 <head>
-<meta charset="UTF-8">
 <title>Secretária IA Pro</title>
-</head><body style="font-family:Arial;text-align:center;background:#f5f5f5;padding:30px;"><h1>Secretária IA Pro</h1><h2>Sua empresa atendendo clientes 24h por dia</h2><p>
-Atenda clientes automaticamente pelo WhatsApp,
-agende compromissos e aumente suas vendas.
-</p><form>
-<input type="text" placeholder="Seu nome" style="padding:10px;margin:5px;"><br><input type="email" placeholder="Seu e-mail" style="padding:10px;margin:5px;"><br>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body{
+font-family:Arial;
+background:#f5f5f5;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+margin:0;
+}
+.card{
+background:white;
+padding:30px;
+border-radius:15px;
+max-width:400px;
+text-align:center;
+box-shadow:0 0 15px rgba(0,0,0,0.1);
+}
+button{
+background:#2563eb;
+color:white;
+border:none;
+padding:12px 20px;
+border-radius:8px;
+font-size:16px;
+cursor:pointer;
+}
+</style>
+</head>
+<body>
 
-<input type="text" placeholder="WhatsApp" style="padding:10px;margin:5px;"><br>
+<div class="card">
+<h1>Secretária IA Pro</h1>
 
-<button type="button"
-onclick="alert('Cadastro recebido! Em breve entraremos em contato.')">
-Testar Gratuitamente
+<p>Sua empresa atendendo clientes 24h por dia.</p>
+
+<p>WhatsApp, agenda, orçamentos e atendimento automático com IA.</p>
+
+<button onclick="window.location.href='login.html'">
+Entrar
 </button>
 
-</form></body>
+</div>
+
+</body>
 </html>
