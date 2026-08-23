@@ -21,7 +21,7 @@
             </a>
         </header>
 
-        <!-- Formulário de novo compromisso -->
+        <!-- Formulário -->
         <div class="bg-white rounded-2xl border border-slate-100 shadow-sm p-5 mb-6">
             <h2 class="font-bold text-slate-900 mb-4">Novo Compromisso</h2>
             
@@ -44,18 +44,24 @@
             </div>
         </div>
 
-        <!-- Lista de compromissos -->
+        <!-- Lista -->
         <div class="bg-white rounded-2xl border border-slate-100 shadow-sm p-5">
-            <h2 class="font-bold text-slate-900 mb-4">Próximos Compromissos</h2>
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="font-bold text-slate-900">Próximos Compromissos</h2>
+                <button onclick="limparAgenda()" class="text-xs text-red-500 hover:underline">Limpar tudo</button>
+            </div>
             
             <div id="listaCompromissos" class="space-y-3">
-                <p class="text-slate-500 text-sm" id="mensagemVazia">Nenhum compromisso agendado ainda.</p>
+                <!-- Os compromissos aparecerão aqui -->
             </div>
         </div>
 
     </div>
 
     <script>
+        // Carrega os compromissos salvos ao abrir a página
+        document.addEventListener('DOMContentLoaded', carregarCompromissos);
+
         function adicionarCompromisso() {
             const cliente = document.getElementById('cliente').value.trim();
             const data = document.getElementById('data').value;
@@ -66,32 +72,67 @@
                 return;
             }
 
-            // Remove a mensagem de vazio
-            const mensagemVazia = document.getElementById('mensagemVazia');
-            if (mensagemVazia) {
-                mensagemVazia.remove();
-            }
+            const compromisso = {
+                id: Date.now(),
+                cliente,
+                data,
+                hora
+            };
 
-            // Formata a data
-            const dataFormatada = new Date(data + 'T00:00:00').toLocaleDateString('pt-BR');
+            // Pega a lista atual
+            let compromissos = JSON.parse(localStorage.getItem('compromissos')) || [];
+            compromissos.push(compromisso);
 
-            // Cria o item
-            const lista = document.getElementById('listaCompromissos');
-            const item = document.createElement('div');
-            item.className = 'flex justify-between items-center p-3 bg-slate-50 rounded-xl';
-            item.innerHTML = `
-                <div>
-                    <p class="font-medium text-slate-900">${cliente}</p>
-                    <p class="text-sm text-slate-500">${dataFormatada} às ${hora}</p>
-                </div>
-                <span class="text-xs bg-indigo-100 text-indigo-700 px-2.5 py-1 rounded-full font-medium">Agendado</span>
-            `;
-            lista.appendChild(item);
+            // Salva
+            localStorage.setItem('compromissos', JSON.stringify(compromissos));
 
-            // Limpa os campos
+            // Limpa campos
             document.getElementById('cliente').value = '';
             document.getElementById('data').value = '';
             document.getElementById('hora').value = '';
+
+            // Atualiza a tela
+            carregarCompromissos();
+        }
+
+        function carregarCompromissos() {
+            const lista = document.getElementById('listaCompromissos');
+            const compromissos = JSON.parse(localStorage.getItem('compromissos')) || [];
+
+            if (compromissos.length === 0) {
+                lista.innerHTML = '<p class="text-slate-500 text-sm">Nenhum compromisso agendado ainda.</p>';
+                return;
+            }
+
+            // Ordena por data
+            compromissos.sort((a, b) => new Date(a.data + 'T' + a.hora) - new Date(b.data + 'T' + b.hora));
+
+            lista.innerHTML = compromissos.map(c => {
+                const dataFormatada = new Date(c.data + 'T00:00:00').toLocaleDateString('pt-BR');
+                return `
+                    <div class="flex justify-between items-center p-3 bg-slate-50 rounded-xl">
+                        <div>
+                            <p class="font-medium text-slate-900">${c.cliente}</p>
+                            <p class="text-sm text-slate-500">${dataFormatada} às ${c.hora}</p>
+                        </div>
+                        <button onclick="removerCompromisso(${c.id})" class="text-red-500 text-sm hover:underline">Remover</button>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function removerCompromisso(id) {
+            let compromissos = JSON.parse(localStorage.getItem('compromissos')) || [];
+            compromissos = compromissos.filter(c => c.id !== id);
+            localStorage.setItem('compromissos', JSON.stringify(compromissos));
+            carregarCompromissos();
+        }
+
+        function limparAgenda() {
+            if (confirm('Tem certeza que deseja apagar todos os compromissos?')) {
+                localStorage.removeItem('compromissos');
+                carregarCompromissos();
+            }
         }
     </script>
 
