@@ -3,13 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Secretária IA Pro</title>
+    <title>Login - Secretária IA Pro</title>
     <style>
-        /* Reseta margens e define o fundo geral */
-        * {
-            box-sizing: border-box;
-        }
-
+        * { box-sizing: border-box; }
         body {
             margin: 0;
             padding: 20px;
@@ -20,55 +16,53 @@
             background-color: #f4f6fb;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-
-        /* Estilo do card centralizado */
-        .card-inicio {
+        .card {
             background: #ffffff;
             padding: 30px 20px;
             border-radius: 16px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
             width: 100%;
-            max-width: 380px;
+            max-width: 400px;
             text-align: center;
         }
-
-        h1 {
-            color: #1e3a8a;
-            font-size: 24px;
-            margin-bottom: 10px;
-        }
-
-        p {
-            color: #4b5563;
+        h1 { color: #1e3a8a; font-size: 22px; margin-bottom: 8px; }
+        p { color: #4b5563; font-size: 13px; margin-bottom: 24px; }
+        input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 12px;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
             font-size: 14px;
-            margin-bottom: 20px;
-            line-height: 1.5;
         }
-
-        .btn-teste {
-            display: inline-block;
+        .btn {
+            display: block;
+            width: 100%;
             background-color: #2563eb;
             color: #ffffff;
-            padding: 12px 20px;
+            padding: 12px;
+            border: none;
             border-radius: 8px;
-            text-decoration: none;
             font-weight: bold;
             font-size: 14px;
-            transition: background 0.3s;
-            width: 100%;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
         }
-
-        .btn-teste:hover {
-            background-color: #1d4ed8;
-        }
+        .btn:hover { background-color: #1d4ed8; }
     </style>
 </head>
 <body>
 
-    <div class="card-inicio">
+    <div class="card">
         <h1>Secretária IA Pro</h1>
-        <p>Sua empresa atendendo clientes 24h por dia. Atenda clientes automaticamente pelo WhatsApp, agende compromissos, gere orçamentos e aumente suas vendas com Inteligência Artificial.</p>
-        <a href="login.html" class="btn-teste">Testar Gratuitamente</a>
+        <p>Faça login para acessar o painel</p>
+        
+        <form action="painel.html" method="GET">
+            <input type="email" placeholder="Seu e-mail" required>
+            <input type="password" placeholder="Sua senha" required>
+            <button type="submit" class="btn">Entrar</button>
+        </form>
     </div>
 
 </body>
