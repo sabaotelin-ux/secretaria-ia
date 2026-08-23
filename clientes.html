@@ -14,58 +14,37 @@
         <header class="bg-white rounded-2xl shadow-sm border border-slate-100 p-5 mb-6 flex justify-between items-center">
             <div>
                 <h1 class="text-xl font-bold text-slate-900">Clientes Atendidos</h1>
-                <p class="text-sm text-slate-500">Histórico de contatos e leads</p>
+                <p class="text-sm text-slate-500">Gerencie seus contatos e leads</p>
             </div>
             <a href="dashboard.html" class="text-indigo-600 text-sm font-medium hover:underline">
                 ← Voltar
             </a>
         </header>
 
-        <!-- Lista de clientes (exemplo) -->
-        <div class="space-y-3">
+        <!-- Formulário de novo cliente -->
+        <div class="bg-white rounded-2xl border border-slate-100 shadow-sm p-5 mb-6">
+            <h2 class="font-bold text-slate-900 mb-4">Adicionar Cliente</h2>
+            
+            <div class="space-y-3">
+                <input type="text" id="nome" placeholder="Nome do cliente" 
+                    class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-indigo-500 focus:outline-none">
+                
+                <input type="text" id="contato" placeholder="E-mail ou WhatsApp" 
+                    class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-indigo-500 focus:outline-none">
+                
+                <select id="status" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-indigo-500 focus:outline-none">
+                    <option value="Novo lead">Novo lead</option>
+                    <option value="Em andamento">Em andamento</option>
+                    <option value="Atendido">Atendido</option>
+                </select>
 
-            <div class="bg-white p-4 rounded-xl border border-slate-100 shadow-sm flex justify-between items-center">
-                <div>
-                    <h3 class="font-semibold text-slate-900">Maria Silva</h3>
-                    <p class="text-sm text-slate-500">maria@email.com • WhatsApp</p>
-                </div>
-                <span class="text-xs bg-green-100 text-green-700 px-2.5 py-1 rounded-full font-medium">Atendido</span>
+                <button onclick="adicionarCliente()" 
+                    class="w-full bg-indigo-600 text-white font-semibold py-3 rounded-xl hover:bg-indigo-700 transition">
+                    Salvar Cliente
+                </button>
             </div>
-
-            <div class="bg-white p-4 rounded-xl border border-slate-100 shadow-sm flex justify-between items-center">
-                <div>
-                    <h3 class="font-semibold text-slate-900">João Santos</h3>
-                    <p class="text-sm text-slate-500">joao@empresa.com • E-mail</p>
-                </div>
-                <span class="text-xs bg-yellow-100 text-yellow-700 px-2.5 py-1 rounded-full font-medium">Em andamento</span>
-            </div>
-
-            <div class="bg-white p-4 rounded-xl border border-slate-100 shadow-sm flex justify-between items-center">
-                <div>
-                    <h3 class="font-semibold text-slate-900">Ana Oliveira</h3>
-                    <p class="text-sm text-slate-500">(11) 98765-4321 • WhatsApp</p>
-                </div>
-                <span class="text-xs bg-blue-100 text-blue-700 px-2.5 py-1 rounded-full font-medium">Novo lead</span>
-            </div>
-
-            <div class="bg-white p-4 rounded-xl border border-slate-100 shadow-sm flex justify-between items-center">
-                <div>
-                    <h3 class="font-semibold text-slate-900">Carlos Mendes</h3>
-                    <p class="text-sm text-slate-500">carlos@negocio.com • E-mail</p>
-                </div>
-                <span class="text-xs bg-green-100 text-green-700 px-2.5 py-1 rounded-full font-medium">Atendido</span>
-            </div>
-
         </div>
 
-        <!-- Botão de adicionar (futuro) -->
-        <div class="mt-6 text-center">
-            <button class="bg-indigo-600 text-white px-5 py-2.5 rounded-xl text-sm font-medium hover:bg-indigo-700 transition">
-                + Adicionar Cliente
-            </button>
-        </div>
-
-    </div>
-
-</body>
-</html>
+        <!-- Lista de clientes -->
+        <div class="bg-white rounded-2xl border border-slate-100 shadow-sm p-5">
+            <div class="flex justify-between items-center
