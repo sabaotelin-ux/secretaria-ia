@@ -1,97 +1,83 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<title>Dashboard - Secretária IA Pro</title>
-
-<style>
-body{
-    margin:0;
-    font-family:Arial,sans-serif;
-    background:#f5f5f5;
-}
-
-.sidebar{
-    width:220px;
-    height:100vh;
-    background:#1f2937;
-    color:white;
-    position:fixed;
-    padding:20px;
-}
-
-.sidebar h2{
-    margin-bottom:30px;
-}
-
-.sidebar a{
-    display:block;
-    color:white;
-    text-decoration:none;
-    padding:10px 0;
-}
-
-.main{
-    margin-left:240px;
-    padding:20px;
-}
-
-.cards{
-    display:flex;
-    gap:20px;
-    flex-wrap:wrap;
-}
-
-.card{
-    background:white;
-    padding:20px;
-    border-radius:10px;
-    width:200px;
-    box-shadow:0 2px 10px rgba(0,0,0,0.1);
-}
-
-.numero{
-    font-size:30px;
-    font-weight:bold;
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel - Secretária IA Pro</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
+<body class="bg-slate-100 font-sans antialiased">
 
-<body>
+    <div class="flex h-screen overflow-hidden">
+        
+        <!-- Sidebar / Menu Lateral -->
+        <aside class="w-64 bg-slate-900 text-slate-300 hidden md:flex flex-col justify-between p-6">
+            <div>
+                <div class="text-xl font-bold text-white mb-8 flex items-center space-x-2">
+                    <span>🤖 Secretária IA</span>
+                </div>
+                <nav class="space-y-2">
+                    <a href="painel.html" class="block py-2.5 px-4 rounded-lg bg-indigo-600 text-white font-medium">Dashboard</a>
+                    <a href="clientes.html" class="block py-2.5 px-4 rounded-lg hover:bg-slate-800 transition">Clientes</a>
+                    <a href="#" class="block py-2.5 px-4 rounded-lg hover:bg-slate-800 transition">Configurações IA</a>
+                </nav>
+            </div>
+            <div>
+                <a href="login.html" class="block py-2.5 px-4 rounded-lg text-red-400 hover:bg-slate-800 transition">Sair da conta</a>
+            </div>
+        </aside>
 
-<div class="sidebar">
-    <h2>🤖 Secretária IA</h2>
+        <!-- Conteúdo Principal -->
+        <div class="flex-1 flex flex-col overflow-y-auto">
+            
+            <!-- Barra Superior -->
+            <header class="bg-white shadow-sm px-6 py-4 flex justify-between items-center">
+                <h1 class="text-xl font-bold text-slate-800">Painel de Controle</h1>
+                <div class="flex items-center space-x-3">
+                    <span class="text-sm font-medium text-slate-600">Empresa Exemplo</span>
+                    <div class="w-10 h-10 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center font-bold">EE</div>
+                </div>
+            </header>
 
-    <a href="#">🏠 Dashboard</a>
-    <a href="#">👥 Clientes</a>
-    <a href="#">📅 Agenda</a>
-    <a href="#">💬 Conversas</a>
-    <a href="#">💰 Orçamentos</a>
-    <a href="#">⚙️ Configurações</a>
-</div>
+            <!-- Área de Estatísticas e Resumo -->
+            <main class="p-6 space-y-6">
+                
+                <!-- Cards de Indicadores -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+                        <p class="text-sm font-medium text-slate-500">Atendimentos Hoje</p>
+                        <h3 class="text-3xl font-bold text-slate-900 mt-2">48</h3>
+                        <span class="text-xs text-green-600 font-semibold mt-1 inline-block">+12% que ontem</span>
+                    </div>
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+                        <p class="text-sm font-medium text-slate-500">Agendamentos Realizados</p>
+                        <h3 class="text-3xl font-bold text-slate-900 mt-2">14</h3>
+                        <span class="text-xs text-green-600 font-semibold mt-1 inline-block">100% automático</span>
+                    </div>
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+                        <p class="text-sm font-medium text-slate-500">Status da IA</p>
+                        <h3 class="text-3xl font-bold text-green-600 mt-2 flex items-center">
+                            <span class="w-3 h-3 bg-green-500 rounded-full inline-block mr-2 animate-pulse"></span> Ativa
+                        </h3>
+                        <span class="text-xs text-slate-500 mt-1 inline-block">Respondendo no WhatsApp</span>
+                    </div>
+                </div>
 
-<div class="main">
+                <!-- Seção de Ações Rápidas -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+                    <h2 class="text-lg font-bold text-slate-800 mb-4">Gerenciamento</h2>
+                    <p class="text-slate-600 mb-4">Acesse a aba de clientes para visualizar os contatos que interagiram com a sua secretária virtual.</p>
+                    <a href="clientes.html" class="inline-block bg-indigo-600 text-white px-5 py-2.5 rounded-lg font-medium hover:bg-indigo-700 transition">
+                        Ver Lista de Clientes →
+                    </a>
+                </div>
 
-<h1>Painel Administrativo</h1>
+            </main>
 
-<div class="cards">
+        </div>
 
-<div class="card">
-<div class="numero">0</div>
-Clientes
-</div>
+    </div>
 
-<div class="card">
-<div class="numero">0</div>
-Agendamentos
-</div>
-
-<div class="card">
-<div class="numero">0</div>
-Conversas IA
-</div>
-
-<div class="card">
-<div class="numero">0</div>
-Orçamentos
-</
+</body>
+</html>
