@@ -3,57 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Painel - Secretária IA Pro</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Painel - Secretária IA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --primary: #2563eb; --bg: #f8fafc; --surface: #ffffff; --text: #1e293b; --muted: #64748b; --border: #e2e8f0; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; display: flex; }
+        
+        /* Sidebar Lateral */
+        aside { width: 250px; background: var(--surface); border-right: 1px solid var(--border); padding: 2rem 1rem; display: flex; flex-direction: column; gap: 0.5rem; }
+        .logo { font-size: 1.25rem; font-weight: 700; color: var(--primary); text-decoration: none; margin-bottom: 2rem; display: block; }
+        aside a { color: var(--muted); text-decoration: none; padding: 0.75rem 1rem; border-radius: 8px; font-weight: 500; transition: all 0.2s; }
+        aside a:hover, aside a.active { background: #eff6ff; color: var(--primary); }
+        
+        /* Conteúdo Principal */
+        main { flex: 1; padding: 2rem 3rem; overflow-y: auto; }
+        header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; }
+        h1 { font-size: 1.75rem; font-weight: 700; }
+        
+        /* Cards do Dashboard */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; }
+        .card { background: var(--surface); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--border); box-shadow: 0 2px 4px rgb(0 0 0 / 0.02); }
+        .card h3 { font-size: 0.875rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem; }
+        .card .value { font-size: 2rem; font-weight: 700; color: var(--text); }
+        
+        @media (max-width: 768px) {
+            body { flex-direction: column; }
+            aside { width: 100%; flex-direction: row; overflow-x: auto; padding: 1rem; border-right: none; border-bottom: 1px solid var(--border); }
+            main { padding: 1.5rem; }
+        }
+    </style>
 </head>
-<body class="bg-slate-50 font-sans min-h-screen">
+<body>
+    <!-- Menu Lateral -->
+    <aside>
+        <a href="index.html" class="logo">🤖 Secretária IA</a>
+        <a href="painel.html" class="active">📊 Visão Geral</a>
+        <a href="agenda.html">📅 Agenda</a>
+        <a href="clientes.html">👥 Clientes</a>
+        <a href="orcamentos.html">💰 Orçamentos</a>
+        <a href="bate-papo.html">💬 Chat IA</a>
+        <a href="login.html" style="margin-top: auto; color: #ef4444;">Sair</a>
+    </aside>
 
-    <div class="max-w-3xl mx-auto px-4 py-8">
-
-        <!-- Cabeçalho -->
-        <header class="bg-white rounded-2xl shadow-sm border border-slate-100 p-5 mb-6 flex justify-between items-center">
-            <div>
-                <h1 class="text-xl font-bold text-slate-900">Painel da Secretária IA</h1>
-                <p class="text-sm text-slate-500">Bem-vindo de volta!</p>
-            </div>
-            <a href="index.html" class="text-red-600 text-sm font-medium hover:underline">
-                Sair
-            </a>
+    <!-- Área Principal -->
+    <main>
+        <header>
+            <h1>Bom dia, Usuário! 👋</h1>
+            <div style="font-size: 0.9rem; color: var(--muted);">Última atualização: Agora</div>
         </header>
 
-        <!-- Resumo rápido -->
-        <div class="grid grid-cols-2 gap-4 mb-6">
-            <div class="bg-white rounded-2xl border border-slate-100 p-4 shadow-sm">
-                <p class="text-sm text-slate-500">Compromissos</p>
-                <p id="totalCompromissos" class="text-2xl font-bold text-slate-900 mt-1">0</p>
+        <section class="grid">
+            <div class="card">
+                <h3>Compromissos Hoje</h3>
+                <div class="value">3</div>
             </div>
-            <div class="bg-white rounded-2xl border border-slate-100 p-4 shadow-sm">
-                <p class="text-sm text-slate-500">Orçamentos</p>
-                <p id="totalOrcamentos" class="text-2xl font-bold text-slate-900 mt-1">0</p>
+            <div class="card">
+                <h3>Novos Clientes</h3>
+                <div class="value">12</div>
             </div>
-        </div>
-
-        <!-- Menu -->
-        <div class="grid gap-4">
-
-            <a href="clientes.html" class="bg-white p-5 rounded-2xl border border-slate-100 shadow-sm hover:border-indigo-300 hover:shadow-md transition flex justify-between items-center group">
-                <div>
-                    <h3 class="font-bold text-slate-900 group-hover:text-indigo-600 transition">Clientes Atendidos</h3>
-                    <p class="text-sm text-slate-500 mt-1">Histórico de conversas e leads</p>
-                </div>
-                <span class="text-2xl">👥</span>
-            </a>
-
-            <a href="agenda.html" class="bg-white p-5 rounded-2xl border border-slate-100 shadow-sm hover:border-indigo-300 hover:shadow-md transition flex justify-between items-center group">
-                <div>
-                    <h3 class="font-bold text-slate-900 group-hover:text-indigo-600 transition">Agenda de Compromissos</h3>
-                    <p class="text-sm text-slate-500 mt-1">Gerencie horários e reuniões</p>
-                </div>
-                <span class="text-2xl">📅</span>
-            </a>
-
-            <a href="orcamentos.html" class="bg-white p-5 rounded-2xl border border-slate-100 shadow-sm hover:border-indigo-300 hover:shadow-md transition flex justify-between items-center group">
-                <div>
-                    <h3 class="font-bold text-slate-900 group-hover:text-indigo-600 transition">Gerador de Orçamentos</h3>
-                    <p class="text-sm text-slate-500 mt-1">Crie propostas profissionais</p>
-                </
+            <div class="card">
+                <h3>Orçamentos Pendentes</h3>
+                <div class="value">5</div>
+            </div>
+            <div class="card">
+                <h3>Mensagens Não Lidas</h3>
+                <div class="value">8</div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
