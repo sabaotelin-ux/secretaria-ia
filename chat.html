@@ -22,16 +22,18 @@
         .status::before { content: ''; width: 8px; height: 8px; background: #16a34a; border-radius: 50%; }
         
         .chat-messages { flex: 1; overflow-y: auto; padding: 1.5rem 2rem; display: flex; flex-direction: column; gap: 1rem; }
-        .message { max-width: 75%; padding: 0.9rem 1.15rem; border-radius: 16px; font-size: 0.95rem; line-height: 1.5; }
+        .message { max-width: 75%; padding: 0.9rem 1.15rem; border-radius: 16px; font-size: 0.95rem; line-height: 1.5; white-space: pre-wrap; }
         .message.bot { background: var(--surface); border: 1px solid var(--border); align-self: flex-start; border-bottom-left-radius: 4px; }
         .message.user { background: var(--primary); color: white; align-self: flex-end; border-bottom-right-radius: 4px; }
         .message .time { font-size: 0.75rem; opacity: 0.7; margin-top: 0.35rem; display: block; }
+        .typing { font-style: italic; color: var(--muted); }
         
         .chat-input-area { padding: 1rem 2rem 1.5rem; background: var(--surface); border-top: 1px solid var(--border); }
         .chat-input-wrapper { display: flex; gap: 0.75rem; align-items: center; background: var(--bg); border: 1px solid var(--border); border-radius: 14px; padding: 0.5rem 0.75rem; }
         .chat-input-wrapper input { flex: 1; border: none; background: transparent; padding: 0.6rem 0.5rem; font-size: 0.95rem; outline: none; color: var(--text); }
         .chat-input-wrapper button { background: var(--primary); color: white; border: none; width: 42px; height: 42px; border-radius: 10px; cursor: pointer; font-size: 1.1rem; display: flex; align-items: center; justify-content: center; transition: opacity 0.2s; }
         .chat-input-wrapper button:hover { opacity: 0.9; }
+        .chat-input-wrapper button:disabled { opacity: 0.5; cursor: not-allowed; }
         
         @media (max-width: 768px) {
             body { flex-direction: column; }
@@ -45,9 +47,9 @@
 <body>
     <aside>
         <a href="index.html" class="logo">🤖 Secretária IA</a>
-        <a href="painel.html">📊 Visão Geral</a>
+        <a href="dashboard.html">📊 Visão Geral</a>
         <a href="agenda.html">📅 Agenda</a>
-        <a href="bate-papo.html" class="active">💬 Chat IA</a>
+        <a href="chat.html" class="active">💬 Chat IA</a>
         <a href="login.html" style="margin-top: auto; color: #ef4444;">Sair</a>
     </aside>
 
@@ -61,11 +63,13 @@
 
         <div class="chat-messages" id="messages">
             <div class="message bot">
-                Olá! 👋 Eu sou a Secretária IA. Posso ajudar você a agendar compromissos, gerar orçamentos ou responder dúvidas de clientes.
-                <span class="time">Agora</span>
-            </div>
-            <div class="message bot">
-                Experimente perguntar: “Quero agendar uma reunião amanhã às 14h” ou “Gere um orçamento de limpeza”.
+                Olá! Sou a Secretária IA 😊<br><br>
+                Posso te ajudar com:
+                • Agendamentos
+                • Orçamentos
+                • Respostas para clientes
+                • Organização do dia a dia<br><br>
+                Como posso te ajudar agora?
                 <span class="time">Agora</span>
             </div>
         </div>
@@ -73,21 +77,45 @@
         <div class="chat-input-area">
             <div class="chat-input-wrapper">
                 <input type="text" id="userInput" placeholder="Digite sua mensagem..." autocomplete="off">
-                <button onclick="sendMessage()">➤</button>
+                <button id="sendBtn" onclick="sendMessage()">➤</button>
             </div>
         </div>
     </main>
 
     <script>
+        // ====================== COLE SUA CHAVE AQUI ======================
+        const GROQ_API_KEY = "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";
+        // =================================================================
+
         const messagesEl = document.getElementById('messages');
         const inputEl = document.getElementById('userInput');
+        const sendBtn = document.getElementById('sendBtn');
 
-        const respostas = [
-            "Perfeito! Já anotei na agenda. Quer que eu envie um lembrete automático?",
-            "Orçamento gerado! Valor estimado: R$ 350,00. Posso enviar para o cliente agora?",
-            "Entendi. Vou responder o cliente de forma humanizada em segundos.",
-            "Horário disponível encontrado! Confirmo o agendamento para você?",
-            "Pronto! Tudo organizado. Mais alguma coisa que eu possa fazer?"
+        let conversationHistory = [
+            {
+                role: "system",
+                content: `Você é a Secretária IA, uma assistente virtual profissional, humanizada e extremamente objetiva.
+
+Personalidade:
+- Fale de forma natural, como uma secretária experiente e prestativa
+- Seja educada, clara e direta
+- Evite textos longos e enrolação
+- Use linguagem simples e profissional
+- Pode usar emojis com moderação para deixar a conversa mais humana
+
+Seu foco principal:
+1. Agendamentos (marcar, remarcar, confirmar)
+2. Geração de orçamentos simples e claros
+3. Respostas prontas para clientes
+4. Organização de tarefas e compromissos
+
+Regras de resposta:
+- Seja objetiva (máximo 3-5 linhas na maioria das vezes)
+- Quando for orçamento, apresente de forma limpa e profissional
+- Quando for agendamento, confirme os dados e peça o que faltar
+- Sempre termine oferecendo ajuda adicional de forma natural
+- Responda sempre em português do Brasil`
+            }
         ];
 
         function addMessage(text, isUser = false) {
@@ -96,20 +124,57 @@
             div.innerHTML = `${text}<span class="time">Agora</span>`;
             messagesEl.appendChild(div);
             messagesEl.scrollTop = messagesEl.scrollHeight;
+            return div;
         }
 
-        function sendMessage() {
+        async function sendMessage() {
             const text = inputEl.value.trim();
             if (!text) return;
 
-            addMessage(text, true);engenharia(hibrida)
+            addMessage(text, true);
             inputEl.value = '';
+            sendBtn.disabled = true;
 
-            // Simula resposta da IA
-            setTimeout(() => {
-                const resposta = respostas[Math.floor(Math.random() * respostas.length)];
-                addMessage(resposta);
-            }, 800 + Math.random() * 700);
+            conversationHistory.push({ role: "user", content: text });
+
+            const typingDiv = addMessage("Digitando...", false);
+            typingDiv.classList.add('typing');
+
+            try {
+                const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+                    method: "POST",
+                    headers: {
+                        "Authorization": `Bearer ${GROQ_API_KEY}`,
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        model: "llama-3.3-70b-versatile",
+                        messages: conversationHistory,
+                        temperature: 0.6,
+                        max_tokens: 800
+                    })
+                });
+
+                if (!response.ok) {
+                    throw new Error(`Erro ${response.status}`);
+                }
+
+                const data = await response.json();
+                const reply = data.choices[0].message.content;
+
+                typingDiv.remove();
+                addMessage(reply);
+
+                conversationHistory.push({ role: "assistant", content: reply });
+
+            } catch (error) {
+                typingDiv.remove();
+                addMessage("Desculpe, ocorreu um erro. Verifique se a chave da API está correta.");
+                console.error(error);
+            } finally {
+                sendBtn.disabled = false;
+                inputEl.focus();
+            }
         }
 
         inputEl.addEventListener('keypress', (e) => {
