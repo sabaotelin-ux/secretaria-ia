@@ -3,61 +3,234 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Secretária IA Pro</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-slate-50 font-sans">
+    <title>Secretária IA - Assistente Virtual Inteligente</title>
+    
+    <!-- Fonte Inter para visual profissional -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* === CSS MINIMALISTA INTEGRADO === */
+        :root {
+            --primary: #2563eb;
+            --primary-hover: #1d4ed8;
+            --bg: #f8fafc;
+            --surface: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --radius: 12px;
+            --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05);
+        }
 
-    <!-- Header -->
-    <header class="bg-white border-b border-slate-200">
-        <div class="max-w-5xl mx-auto px-4 py-4 flex justify-between items-center">
-            <div class="text-xl font-bold text-indigo-600">🤖 Secretária IA Pro</div>
-            <a href="login.html" class="bg-indigo-600 text-white px-5 py-2.5 rounded-lg text-sm font-medium hover:bg-indigo-700 transition">
-                Entrar
-            </a>
-        </div>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--text-main);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header & Navegação */
+        header {
+            background: var(--surface);
+            border-bottom: 1px solid var(--border);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .logo { 
+            font-size: 1.25rem; 
+            font-weight: 700; 
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            margin-left: 1.5rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        nav a:hover, nav a.active { color: var(--primary); }
+
+        /* Layout Principal */
+        main {
+            flex: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+            width: 100%;
+        }
+
+        .hero {
+            text-align: center;
+            max-width: 700px;
+            margin: 2rem auto 4rem;
+        }
+
+        .hero h1 {
+            font-size: 2.75rem;
+            letter-spacing: -0.02em;
+            margin-bottom: 1rem;
+            color: var(--text-main);
+        }
+
+        .hero p {
+            font-size: 1.125rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+
+        /* Botões */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--radius);
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s;
+            cursor: pointer;
+            border: none;
+            font-size: 0.95rem;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover { background: var(--primary-hover); transform: translateY(-1px); }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--text-main);
+            margin-left: 0.75rem;
+        }
+
+        .btn-outline:hover { border-color: var(--primary); color: var(--primary); }
+
+        /* Cards de Funcionalidades */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .card {
+            background: var(--surface);
+            padding: 1.75rem;
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+            transition: transform 0.2s;
+        }
+
+        .card:hover { transform: translateY(-3px); }
+        .card h3 { font-size: 1.1rem; margin-bottom: 0.5rem; }
+        .card p { font-size: 0.9rem; color: var(--text-muted); }
+        .card-icon { 
+            font-size: 1.5rem; 
+            margin-bottom: 1rem; 
+            display: block; 
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            header { padding: 1rem; }
+            nav { display: none; } /* Em produção, use um menu hambúrguer */
+            .btn-outline { margin-left: 0; margin-top: 0.75rem; display: block; width: 100%; }
+            .btn-primary { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- CABEÇALHO -->
+    <header>
+        <a href="#" class="logo"> Secretária IA</a>
+        <nav>
+            <a href="painel.html">Painel</a>
+            <a href="agenda.html">Agenda</a>
+            <a href="bate-papo.html">Chat IA</a>
+            <a href="login.html" style="color: var(--primary); font-weight: 600;">Entrar</a>
+        </nav>
     </header>
 
-    <!-- Hero -->
-    <main class="max-w-5xl mx-auto px-4 py-16 md:py-24 text-center">
-        <h1 class="text-4xl md:text-5xl font-bold text-slate-900 leading-tight mb-6">
-            Sua Secretária Virtual<br>
-            <span class="text-indigo-600">inteligente 24 horas</span>
-        </h1>
-        
-        <p class="text-lg text-slate-600 max-w-2xl mx-auto mb-10">
-            Atende clientes, responde mensagens, agenda compromissos, gera orçamentos e organiza tudo automaticamente. Economize tempo e aumente o resultado da sua empresa.
-        </p>
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main>
+        <section class="hero">
+            <h1>Sua assistente virtual que trabalha 24h por dia</h1>
+            <p>Automatize agendamentos, gere orçamentos instantâneos e organize seus clientes com o poder da Inteligência Artificial.</p>
+            
+            <div>
+                <a href="painel.html" class="btn btn-primary">Começar Agora</a>
+                <a href="bate-papo.html" class="btn btn-outline">Testar Chat Grátis</a>
+            </div>
+        </section>
 
-        <a href="login.html" class="inline-block bg-indigo-600 text-white px-8 py-3.5 rounded-xl font-semibold text-lg hover:bg-indigo-700 transition shadow-lg shadow-indigo-200">
-            Acessar o Painel →
-        </a>
+        <!-- CARDS DE FUNCIONALIDADES -->
+        <section class="features">
+            <div class="card">
+                <span class="card-icon">📅</span>
+                <h3>Agenda Inteligente</h3>
+                <p>A IA gerencia seus compromissos, envia lembretes automáticos e evita conflitos de horário.</p>
+            </div>
+            <div class="card">
+                <span class="card-icon"></span>
+                <h3>Atendimento Humanizado</h3>
+                <p>Responda clientes no WhatsApp ou site com respostas naturais e contextuais em segundos.</p>
+            </div>
+            <div class="card">
+                <span class="card-icon">📊</span>
+                <h3>Orçamentos Automáticos</h3>
+                <p>Gere propostas profissionais baseadas nos dados dos clientes sem perder tempo digitando.</p>
+            </div>
+        </section>
     </main>
 
-    <!-- Benefícios -->
-    <section class="max-w-5xl mx-auto px-4 pb-20">
-        <div class="grid md:grid-cols-3 gap-5">
-            <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
-                <div class="text-3xl mb-3">💬</div>
-                <h3 class="font-bold text-slate-900 mb-2">Atendimento 24h</h3>
-                <p class="text-slate-600 text-sm">Responde clientes no WhatsApp e e-mail de forma automática e inteligente.</p>
-            </div>
-            <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
-                <div class="text-3xl mb-3">📅</div>
-                <h3 class="font-bold text-slate-900 mb-2">Agenda Inteligente</h3>
-                <p class="text-slate-600 text-sm">Organiza e marca compromissos sem você precisar se preocupar.</p>
-            </div>
-            <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
-                <div class="text-3xl mb-3">💰</div>
-                <h3 class="font-bold text-slate-900 mb-2">Gera Orçamentos</h3>
-                <p class="text-slate-600 text-sm">Cria propostas profissionais em segundos e ajuda a fechar mais vendas.</p>
-            </div>
-        </div>
-    </section>
+    <!-- LÓGICA JAVASCRIPT BÁSICA -->
+    <script>
+        // Verifica se usuário já está logado (simulação inicial)
+        document.addEventListener('DOMContentLoaded', () => {
+            const isLoggedIn = localStorage.getItem('secretaria_ia_token');
+            
+            if (isLoggedIn) {
+                console.log('✅ Usuário autenticado. Redirecionando para painel...');
+                // Descomente a linha abaixo quando tiver o painel pronto
+                // window.location.href = 'painel.html';
+            } else {
+                console.log('ℹ️ Nenhum token encontrado. Exibindo landing page.');
+            }
 
-    <footer class="text-center text-slate-500 text-sm py-8 border-t border-slate-200">
-        © 2026 Secretária IA Pro — Valorizando seu tempo e seu dinheiro
-    </footer>
-
+            // Animação suave ao carregar os cards
+            const cards = document.querySelectorAll('.card');
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                setTimeout(() => {
+                    card.style.transition = 'all 0.5s ease';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, 150 * index);
+            });
+        });
+    </script>
 </body>
 </html>
