@@ -34,4 +34,70 @@
         
         @media (max-width: 768px) {
             body { flex-direction: column; }
-            aside { width: 100%; flex-direction: row; overflow-x: auto; padding: 1rem; border-right: none; border-bottom: 1px solid var(--border); gap: 0.25rem
+            aside { width: 100%; flex-direction: row; overflow-x: auto; padding: 1rem; border-right: none; border-bottom: 1px solid var(--border); gap: 0.25rem; }
+            aside a { white-space: nowrap; font-size: 0.9rem; }
+            main { padding: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <aside>
+        <a href="index.html" class="logo">🤖 Secretária IA</a>
+        <a href="painel.html" class="active">📊 Visão Geral</a>
+        <a href="agenda.html">📅 Agenda</a>
+        <a href="bate-papo.html">💬 Chat IA</a>
+        <a href="login.html" style="margin-top: auto; color: #ef4444;">Sair</a>
+    </aside>
+
+    <main>
+        <header>
+            <h1>Bom dia! 👋</h1>
+            <div style="font-size: 0.9rem; color: var(--muted);">Última atualização: agora</div>
+        </header>
+
+        <section class="grid">
+            <div class="card">
+                <h3>Compromissos Hoje</h3>
+                <div class="value">3</div>
+            </div>
+            <div class="card">
+                <h3>Novos Clientes</h3>
+                <div class="value">12</div>
+            </div>
+            <div class="card">
+                <h3>Orçamentos Pendentes</h3>
+                <div class="value">5</div>
+            </div>
+            <div class="card">
+                <h3>Mensagens Não Lidas</h3>
+                <div class="value">8</div>
+            </div>
+        </section>
+
+        <h2 class="section-title">Atividades recentes</h2>
+        <div class="activity-list">
+            <div class="activity-item">
+                <div class="activity-icon">📅</div>
+                <div class="activity-text">
+                    <strong>Novo agendamento criado</strong>
+                    <span>Reunião com Cliente Silva • há 12 min</span>
+                </div>
+            </div>
+            <div class="activity-item">
+                <div class="activity-icon">💬</div>
+                <div class="activity-text">
+                    <strong>Mensagem respondida pela IA</strong>
+                    <span>Cliente perguntou sobre orçamento • há 28 min</span>
+                </div>
+            </div>
+            <div class="activity-item">
+                <div class="activity-icon">💰</div>
+                <div class="activity-text">
+                    <strong>Orçamento gerado automaticamente</strong>
+                    <span>Proposta enviada para Maria Oliveira • há 1h</span>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
