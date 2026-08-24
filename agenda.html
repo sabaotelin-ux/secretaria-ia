@@ -3,138 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agenda - Secretária IA Pro</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Agenda - Secretária IA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --primary: #2563eb; --bg: #f8fafc; --surface: #ffffff; --text: #1e293b; --muted: #64748b; --border: #e2e8f0; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; display: flex; }
+        
+        aside { width: 250px; background: var(--surface); border-right: 1px solid var(--border); padding: 2rem 1rem; display: flex; flex-direction: column; gap: 0.5rem; }
+        .logo { font-size: 1.25rem; font-weight: 700; color: var(--primary); text-decoration: none; margin-bottom: 2rem; display: block; }
+        aside a { color: var(--muted); text-decoration: none; padding: 0.75rem 1rem; border-radius: 8px; font-weight: 500; transition: all 0.2s; }
+        aside a:hover, aside a.active { background: #eff6ff; color: var(--primary); }
+        
+        main { flex: 1; padding: 2rem 3rem; overflow-y: auto; }
+        header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; }
+        h1 { font-size: 1.75rem; font-weight: 700; }
+        
+        .event-list { display: flex; flex-direction: column; gap: 1rem; }
+        .event-card { background: var(--surface); padding: 1.25rem; border-radius: 12px; border: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+        .event-time { font-weight: 600; color: var(--primary); min-width: 80px; }
+        .event-title { font-weight: 500; flex: 1; }
+        .event-status { font-size: 0.8rem; padding: 0.25rem 0.75rem; border-radius: 20px; background: #dcfce7; color: #166534; }
+        
+        @media (max-width: 768px) {
+            body { flex-direction: column; }
+            aside { width: 100%; flex-direction: row; overflow-x: auto; padding: 1rem; border-right: none; border-bottom: 1px solid var(--border); }
+            main { padding: 1.5rem; }
+        }
+    </style>
 </head>
-<body class="bg-slate-50 font-sans min-h-screen">
+<body>
+    <aside>
+        <a href="index.html" class="logo">🤖 Secretária IA</a>
+        <a href="painel.html"> Visão Geral</a>
+        <a href="agenda.html" class="active">📅 Agenda</a>
+        <a href="clientes.html">👥 Clientes</a>
+        <a href="orcamentos.html">💰 Orçamentos</a>
+        <a href="bate-papo.html">💬 Chat IA</a>
+        <a href="login.html" style="margin-top: auto; color: #ef4444;">Sair</a>
+    </aside>
 
-    <div class="max-w-3xl mx-auto px-4 py-8">
-
-        <!-- Cabeçalho -->
-        <header class="bg-white rounded-2xl shadow-sm border border-slate-100 p-5 mb-6 flex justify-between items-center">
-            <div>
-                <h1 class="text-xl font-bold text-slate-900">Agenda de Compromissos</h1>
-                <p class="text-sm text-slate-500">Organize seus horários</p>
-            </div>
-            <a href="dashboard.html" class="text-indigo-600 text-sm font-medium hover:underline">
-                ← Voltar
-            </a>
+    <main>
+        <header>
+            <h1>Minha Agenda 📅</h1>
+            <button style="background: var(--primary); color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 8px; font-weight: 600; cursor: pointer;">+ Novo Agendamento</button>
         </header>
 
-        <!-- Formulário -->
-        <div class="bg-white rounded-2xl border border-slate-100 shadow-sm p-5 mb-6">
-            <h2 class="font-bold text-slate-900 mb-4">Novo Compromisso</h2>
-            
-            <div class="space-y-3">
-                <input type="text" id="cliente" placeholder="Nome do cliente" 
-                    class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-indigo-500 focus:outline-none">
-                
-                <div class="grid grid-cols-2 gap-3">
-                    <input type="date" id="data" 
-                        class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-indigo-500 focus:outline-none">
-                    
-                    <input type="time" id="hora" 
-                        class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-indigo-500 focus:outline-none">
-                </div>
-
-                <button onclick="adicionarCompromisso()" 
-                    class="w-full bg-indigo-600 text-white font-semibold py-3 rounded-xl hover:bg-indigo-700 transition">
-                    Salvar Agendamento
-                </button>
+        <div class="event-list">
+            <div class="event-card">
+                <span class="event-time">09:00</span>
+                <span class="event-title">Reunião com Cliente Silva</span>
+                <span class="event-status">Confirmado</span>
+            </div>
+            <div class="event-card">
+                <span class="event-time">14:30</span>
+                <span class="event-title">Almoço de Negócios - Restaurante X</span>
+                <span class="event-status">Pendente</span>
+            </div>
+            <div class="event-card">
+                <span class="event-time">16:00</span>
+                <span class="event-title">Call de Alinhamento Equipe</span>
+                <span class="event-status">Confirmado</span>
             </div>
         </div>
-
-        <!-- Lista -->
-        <div class="bg-white rounded-2xl border border-slate-100 shadow-sm p-5">
-            <div class="flex justify-between items-center mb-4">
-                <h2 class="font-bold text-slate-900">Próximos Compromissos</h2>
-                <button onclick="limparAgenda()" class="text-xs text-red-500 hover:underline">Limpar tudo</button>
-            </div>
-            
-            <div id="listaCompromissos" class="space-y-3">
-                <!-- Os compromissos aparecerão aqui -->
-            </div>
-        </div>
-
-    </div>
-
-    <script>
-        // Carrega os compromissos salvos ao abrir a página
-        document.addEventListener('DOMContentLoaded', carregarCompromissos);
-
-        function adicionarCompromisso() {
-            const cliente = document.getElementById('cliente').value.trim();
-            const data = document.getElementById('data').value;
-            const hora = document.getElementById('hora').value;
-
-            if (!cliente || !data || !hora) {
-                alert('Por favor, preencha todos os campos.');
-                return;
-            }
-
-            const compromisso = {
-                id: Date.now(),
-                cliente,
-                data,
-                hora
-            };
-
-            // Pega a lista atual
-            let compromissos = JSON.parse(localStorage.getItem('compromissos')) || [];
-            compromissos.push(compromisso);
-
-            // Salva
-            localStorage.setItem('compromissos', JSON.stringify(compromissos));
-
-            // Limpa campos
-            document.getElementById('cliente').value = '';
-            document.getElementById('data').value = '';
-            document.getElementById('hora').value = '';
-
-            // Atualiza a tela
-            carregarCompromissos();
-        }
-
-        function carregarCompromissos() {
-            const lista = document.getElementById('listaCompromissos');
-            const compromissos = JSON.parse(localStorage.getItem('compromissos')) || [];
-
-            if (compromissos.length === 0) {
-                lista.innerHTML = '<p class="text-slate-500 text-sm">Nenhum compromisso agendado ainda.</p>';
-                return;
-            }
-
-            // Ordena por data
-            compromissos.sort((a, b) => new Date(a.data + 'T' + a.hora) - new Date(b.data + 'T' + b.hora));
-
-            lista.innerHTML = compromissos.map(c => {
-                const dataFormatada = new Date(c.data + 'T00:00:00').toLocaleDateString('pt-BR');
-                return `
-                    <div class="flex justify-between items-center p-3 bg-slate-50 rounded-xl">
-                        <div>
-                            <p class="font-medium text-slate-900">${c.cliente}</p>
-                            <p class="text-sm text-slate-500">${dataFormatada} às ${c.hora}</p>
-                        </div>
-                        <button onclick="removerCompromisso(${c.id})" class="text-red-500 text-sm hover:underline">Remover</button>
-                    </div>
-                `;
-            }).join('');
-        }
-
-        function removerCompromisso(id) {
-            let compromissos = JSON.parse(localStorage.getItem('compromissos')) || [];
-            compromissos = compromissos.filter(c => c.id !== id);
-            localStorage.setItem('compromissos', JSON.stringify(compromissos));
-            carregarCompromissos();
-        }
-
-        function limparAgenda() {
-            if (confirm('Tem certeza que deseja apagar todos os compromissos?')) {
-                localStorage.removeItem('compromissos');
-                carregarCompromissos();
-            }
-        }
-    </script>
-
+    </main>
 </body>
 </html>
