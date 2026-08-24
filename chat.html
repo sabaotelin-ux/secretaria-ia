@@ -15,7 +15,7 @@
         <div class="w-10 h-10 bg-indigo-100 rounded-full flex items-center justify-center text-xl">🤖</div>
         <div>
           <h1 class="font-bold text-slate-900">Secretária IA</h1>
-          <p class="text-xs text-green-600">Online • Powered by Gemini</p>
+          <p class="text-xs text-green-600">Online • Powered by Groq</p>
         </div>
       </div>
       <a href="dashboard.html" class="text-indigo-600 text-sm font-medium hover:underline">← Voltar</a>
@@ -24,40 +24,4 @@
     <div id="chatArea" class="flex-1 bg-white rounded-2xl border border-slate-100 shadow-sm p-4 overflow-y-auto mb-4 space-y-4" style="min-height: 420px; max-height: 520px;">
       <div class="flex gap-3">
         <div class="w-8 h-8 bg-indigo-100 rounded-full flex items-center justify-center text-sm flex-shrink-0">🤖</div>
-        <div class="bg-slate-100 rounded-2xl rounded-tl-none px-4 py-3 max-w-[85%]">
-          <p class="text-sm text-slate-800">Olá! Eu sou a <strong>Secretária IA Pro</strong>. Como posso te ajudar hoje?</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="bg-white rounded-2xl border border-slate-100 shadow-sm p-3 flex gap-2">
-      <input 
-        type="text" 
-        id="userInput" 
-        placeholder="Digite sua mensagem..." 
-        class="flex-1 px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm"
-        onkeypress="if(event.key === 'Enter') sendMessage()"
-      >
-      <button 
-        onclick="sendMessage()" 
-        class="bg-indigo-600 hover:bg-indigo-700 text-white px-5 py-3 rounded-xl font-medium text-sm"
-      >
-        Enviar
-      </button>
-    </div>
-  </div>
-
-  <script>
-    const GEMINI_API_KEY = "AQ.Ab8RN6JruGDq-DW_nVnTdr07gS6VUtFBFulzxLsClphdW4E0jg";
-
-    const chatArea = document.getElementById("chatArea");
-    const userInput = document.getElementById("userInput");
-
-    let conversationHistory = [
-      {
-        role: "user",
-        parts: [{ text: "Você é a Secretária IA Pro, uma assistente virtual profissional, educada e eficiente. Responda sempre em português brasileiro de forma clara e útil." }]
-      },
-      {
-        role: "model",
-        parts
+        <div class="bg-slate-100 rounded-2xl rounded-tl
