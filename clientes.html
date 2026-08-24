@@ -3,48 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clientes - Secretária IA Pro</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Clientes - Secretária IA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --primary: #2563eb; --bg: #f8fafc; --surface: #ffffff; --text: #1e293b; --muted: #64748b; --border: #e2e8f0; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; display: flex; }
+        
+        aside { width: 250px; background: var(--surface); border-right: 1px solid var(--border); padding: 2rem 1rem; display: flex; flex-direction: column; gap: 0.5rem; }
+        .logo { font-size: 1.25rem; font-weight: 700; color: var(--primary); text-decoration: none; margin-bottom: 2rem; display: block; }
+        aside a { color: var(--muted); text-decoration: none; padding: 0.75rem 1rem; border-radius: 8px; font-weight: 500; transition: all 0.2s; }
+        aside a:hover, aside a.active { background: #eff6ff; color: var(--primary); }
+        
+        main { flex: 1; padding: 2rem 3rem; overflow-y: auto; }
+        header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; }
+        h1 { font-size: 1.75rem; font-weight: 700; }
+        
+        table { width: 100%; border-collapse: collapse; background: var(--surface); border-radius: 12px; overflow: hidden; border: 1px solid var(--border); }
+        th, td { padding: 1rem 1.5rem; text-align: left; border-bottom: 1px solid var(--border); }
+        th { background: #f1f5f9; font-weight: 600; color: var(--muted); font-size: 0.875rem; text-transform: uppercase; }
+        tr:last-child td { border-bottom: none; }
+        
+        @media (max-width: 768px) {
+            body { flex-direction: column; }
+            aside { width: 100%; flex-direction: row; overflow-x: auto; padding: 1rem; border-right: none; border-bottom: 1px solid var(--border); }
+            main { padding: 1.5rem; }
+            table { display: block; overflow-x: auto; }
+        }
+    </style>
 </head>
-<body class="bg-slate-50 font-sans min-h-screen">
+<body>
+    <aside>
+        <a href="index.html" class="logo"> Secretária IA</a>
+        <a href="painel.html">📊 Visão Geral</a>
+        <a href="agenda.html">📅 Agenda</a>
+        <a href="clientes.html" class="active">👥 Clientes</a>
+        <a href="orcamentos.html">💰 Orçamentos</a>
+        <a href="bate-papo.html">💬 Chat IA</a>
+        <a href="login.html" style="margin-top: auto; color: #ef4444;">Sair</a>
+    </aside>
 
-    <div class="max-w-3xl mx-auto px-4 py-8">
-
-        <!-- Cabeçalho -->
-        <header class="bg-white rounded-2xl shadow-sm border border-slate-100 p-5 mb-6 flex justify-between items-center">
-            <div>
-                <h1 class="text-xl font-bold text-slate-900">Clientes Atendidos</h1>
-                <p class="text-sm text-slate-500">Gerencie seus contatos e leads</p>
-            </div>
-            <a href="dashboard.html" class="text-indigo-600 text-sm font-medium hover:underline">
-                ← Voltar
-            </a>
+    <main>
+        <header>
+            <h1>Base de Clientes </h1>
+            <button style="background: var(--primary); color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 8px; font-weight: 600; cursor: pointer;">+ Adicionar Cliente</button>
         </header>
 
-        <!-- Formulário de novo cliente -->
-        <div class="bg-white rounded-2xl border border-slate-100 shadow-sm p-5 mb-6">
-            <h2 class="font-bold text-slate-900 mb-4">Adicionar Cliente</h2>
-            
-            <div class="space-y-3">
-                <input type="text" id="nome" placeholder="Nome do cliente" 
-                    class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-indigo-500 focus:outline-none">
-                
-                <input type="text" id="contato" placeholder="E-mail ou WhatsApp" 
-                    class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-indigo-500 focus:outline-none">
-                
-                <select id="status" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-indigo-500 focus:outline-none">
-                    <option value="Novo lead">Novo lead</option>
-                    <option value="Em andamento">Em andamento</option>
-                    <option value="Atendido">Atendido</option>
-                </select>
-
-                <button onclick="adicionarCliente()" 
-                    class="w-full bg-indigo-600 text-white font-semibold py-3 rounded-xl hover:bg-indigo-700 transition">
-                    Salvar Cliente
-                </button>
-            </div>
-        </div>
-
-        <!-- Lista de clientes -->
-        <div class="bg-white rounded-2xl border border-slate-100 shadow-sm p-5">
-            <div class="flex justify-between items-center
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Email</th>
+                    <th>Telefone</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Maria Oliveira</td>
+                    <td>maria@email.com</td>
+                    <td>(11) 99999-8888</td>
+                    <td style="color: #166534; font-weight: 500;">Ativo</td>
+                </tr>
+                <tr>
+                    <td>João Santos</td>
+                    <td>joao@email.com</td>
+                    <td>(21) 98888-7777</td>
+                    <td style="color: #ca8a04; font-weight: 500;">Em Negociação</td>
+                </tr>
+                <tr>
+                    <td>Ana Costa</td>
+                    <td>ana@email.com</td>
+                    <td>(31) 97777-6666</td>
+                    <td style="color: #166534; font-weight: 500;">Ativo</td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+</body>
+</html>
