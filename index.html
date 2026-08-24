@@ -3,166 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Secretária IA - Assistente Virtual Inteligente</title>
-    
-    <!-- Fonte Inter para visual profissional -->
+    <title>Secretária IA - Assistente Virtual</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
-        /* === CSS MINIMALISTA INTEGRADO === */
-        :root {
-            --primary: #2563eb;
-            --primary-hover: #1d4ed8;
-            --bg: #f8fafc;
-            --surface: #ffffff;
-            --text-main: #1e293b;
-            --text-muted: #64748b;
-            --border: #e2e8f0;
-            --radius: 12px;
-            --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05);
-        }
-
+        :root { --primary: #2563eb; --bg: #f8fafc; --surface: #ffffff; --text: #1e293b; --muted: #64748b; --border: #e2e8f0; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
         
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg);
-            color: var(--text-main);
-            line-height: 1.6;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-
-        /* Header & Navegação */
-        header {
-            background: var(--surface);
-            border-bottom: 1px solid var(--border);
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 10;
-        }
-
-        .logo { 
-            font-size: 1.25rem; 
-            font-weight: 700; 
-            color: var(--primary);
-            text-decoration: none;
-        }
-
-        nav a {
-            color: var(--text-muted);
-            text-decoration: none;
-            margin-left: 1.5rem;
-            font-size: 0.9rem;
-            font-weight: 500;
-            transition: color 0.2s;
-        }
-
-        nav a:hover, nav a.active { color: var(--primary); }
-
-        /* Layout Principal */
-        main {
-            flex: 1;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 3rem 2rem;
-            width: 100%;
-        }
-
-        .hero {
-            text-align: center;
-            max-width: 700px;
-            margin: 2rem auto 4rem;
-        }
-
-        .hero h1 {
-            font-size: 2.75rem;
-            letter-spacing: -0.02em;
-            margin-bottom: 1rem;
-            color: var(--text-main);
-        }
-
-        .hero p {
-            font-size: 1.125rem;
-            color: var(--text-muted);
-            margin-bottom: 2rem;
-        }
-
-        /* Botões */
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0.75rem 1.5rem;
-            border-radius: var(--radius);
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.2s;
-            cursor: pointer;
-            border: none;
-            font-size: 0.95rem;
-        }
-
-        .btn-primary {
-            background: var(--primary);
-            color: white;
-        }
-
-        .btn-primary:hover { background: var(--primary-hover); transform: translateY(-1px); }
-
-        .btn-outline {
-            background: transparent;
-            border: 1px solid var(--border);
-            color: var(--text-main);
-            margin-left: 0.75rem;
-        }
-
+        header { background: var(--surface); border-bottom: 1px solid var(--border); padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 10; }
+        .logo { font-size: 1.25rem; font-weight: 700; color: var(--primary); text-decoration: none; }
+        nav a { color: var(--muted); text-decoration: none; margin-left: 1.5rem; font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
+        nav a:hover { color: var(--primary); }
+        
+        main { max-width: 1200px; margin: 0 auto; padding: 3rem 2rem; }
+        .hero { text-align: center; max-width: 700px; margin: 2rem auto 4rem; }
+        .hero h1 { font-size: 2.5rem; letter-spacing: -0.02em; margin-bottom: 1rem; }
+        .hero p { font-size: 1.1rem; color: var(--muted); margin-bottom: 2rem; }
+        
+        .btn { display: inline-flex; align-items: center; justify-content: center; padding: 0.75rem 1.5rem; border-radius: 12px; font-weight: 600; text-decoration: none; transition: all 0.2s; cursor: pointer; border: none; }
+        .btn-primary { background: var(--primary); color: white; }
+        .btn-primary:hover { opacity: 0.9; transform: translateY(-1px); }
+        .btn-outline { background: transparent; border: 1px solid var(--border); color: var(--text); margin-left: 0.75rem; }
         .btn-outline:hover { border-color: var(--primary); color: var(--primary); }
-
-        /* Cards de Funcionalidades */
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-            margin-top: 3rem;
-        }
-
-        .card {
-            background: var(--surface);
-            padding: 1.75rem;
-            border-radius: var(--radius);
-            border: 1px solid var(--border);
-            box-shadow: var(--shadow);
-            transition: transform 0.2s;
-        }
-
+        
+        .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
+        .card { background: var(--surface); padding: 1.75rem; border-radius: 12px; border: 1px solid var(--border); box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05); transition: transform 0.2s; }
         .card:hover { transform: translateY(-3px); }
         .card h3 { font-size: 1.1rem; margin-bottom: 0.5rem; }
-        .card p { font-size: 0.9rem; color: var(--text-muted); }
-        .card-icon { 
-            font-size: 1.5rem; 
-            margin-bottom: 1rem; 
-            display: block; 
-        }
-
-        /* Responsividade */
+        .card p { font-size: 0.9rem; color: var(--muted); }
+        .card-icon { font-size: 1.5rem; margin-bottom: 1rem; display: block; }
+        
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2rem; }
-            header { padding: 1rem; }
-            nav { display: none; } /* Em produção, use um menu hambúrguer */
+            .hero h1 { font-size: 1.8rem; }
+            nav { display: none; }
             .btn-outline { margin-left: 0; margin-top: 0.75rem; display: block; width: 100%; }
             .btn-primary { width: 100%; }
         }
     </style>
 </head>
 <body>
-
-    <!-- CABEÇALHO -->
     <header>
         <a href="#" class="logo"> Secretária IA</a>
         <nav>
@@ -173,19 +53,16 @@
         </nav>
     </header>
 
-    <!-- CONTEÚDO PRINCIPAL -->
     <main>
         <section class="hero">
             <h1>Sua assistente virtual que trabalha 24h por dia</h1>
             <p>Automatize agendamentos, gere orçamentos instantâneos e organize seus clientes com o poder da Inteligência Artificial.</p>
-            
             <div>
                 <a href="painel.html" class="btn btn-primary">Começar Agora</a>
                 <a href="bate-papo.html" class="btn btn-outline">Testar Chat Grátis</a>
             </div>
         </section>
 
-        <!-- CARDS DE FUNCIONALIDADES -->
         <section class="features">
             <div class="card">
                 <span class="card-icon">📅</span>
@@ -193,7 +70,7 @@
                 <p>A IA gerencia seus compromissos, envia lembretes automáticos e evita conflitos de horário.</p>
             </div>
             <div class="card">
-                <span class="card-icon"></span>
+                <span class="card-icon">💬</span>
                 <h3>Atendimento Humanizado</h3>
                 <p>Responda clientes no WhatsApp ou site com respostas naturais e contextuais em segundos.</p>
             </div>
@@ -205,21 +82,8 @@
         </section>
     </main>
 
-    <!-- LÓGICA JAVASCRIPT BÁSICA -->
     <script>
-        // Verifica se usuário já está logado (simulação inicial)
         document.addEventListener('DOMContentLoaded', () => {
-            const isLoggedIn = localStorage.getItem('secretaria_ia_token');
-            
-            if (isLoggedIn) {
-                console.log('✅ Usuário autenticado. Redirecionando para painel...');
-                // Descomente a linha abaixo quando tiver o painel pronto
-                // window.location.href = 'painel.html';
-            } else {
-                console.log('ℹ️ Nenhum token encontrado. Exibindo landing page.');
-            }
-
-            // Animação suave ao carregar os cards
             const cards = document.querySelectorAll('.card');
             cards.forEach((card, index) => {
                 card.style.opacity = '0';
