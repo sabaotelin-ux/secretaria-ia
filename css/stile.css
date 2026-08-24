@@ -1,1 +1,38 @@
-/*Estilos da Secretaria IA
+/* css/style.css - Base Minimalista para Secretária IA */
+:root {
+  --primary-color: #2563eb; /* Azul Tech */
+  --bg-color: #f8fafc;      /* Fundo Claro */
+  --text-color: #1e293b;    /* Texto Escuro */
+  --card-bg: #ffffff;       /* Fundo dos Cards */
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+/* Container principal para centralizar conteúdo */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+/* Botão padrão da IA */
+.btn-primary {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.btn-primary:hover { opacity: 0.9; }
+
