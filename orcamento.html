@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orçamentos - Secretária IA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --primary: #2563eb; --bg: #f8fafc; --surface: #ffffff; --text: #1e293b; --muted: #64748b; --border: #e2e8f0; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; display: flex; }
+        
+        aside { width: 250px; background: var(--surface); border-right: 1px solid var(--border); padding: 2rem 1rem; display: flex; flex-direction: column; gap: 0.5rem; }
+        .logo { font-size: 1.25rem; font-weight: 700; color: var(--primary); text-decoration: none; margin-bottom: 2rem; display: block; }
+        aside a { color: var(--muted); text-decoration: none; padding: 0.75rem 1rem; border-radius: 8px; font-weight: 500; transition: all 0.2s; }
+        aside a:hover, aside a.active { background: #eff6ff; color: var(--primary); }
+        
+        main { flex: 1; padding: 2rem 3rem; overflow-y: auto; }
+        header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; }
+        h1 { font-size: 1.75rem; font-weight: 700; }
+        
+        .quote-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; }
+        .quote-card { background: var(--surface); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--border); }
+        .quote-header { display: flex; justify-content: space-between; margin-bottom: 1rem; }
+        .quote-id { font-size: 0.8rem; color: var(--muted); }
+        .quote-value { font-size: 1.5rem; font-weight: 700; color: var(--primary); }
+        .quote-client { font-weight: 600; margin-bottom: 0.5rem; }
+        .quote-date { font-size: 0.85rem; color: var(--muted); }
+        
+        @media (max-width: 768px) {
+            body { flex-direction: column; }
+            aside { width: 100%; flex-direction: row; overflow-x: auto; padding: 1rem; border-right: none; border-bottom: 1px solid var(--border); }
+            main { padding: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <aside>
+        <a href="index.html" class="logo">🤖 Secretária IA</a>
+        <a href="painel.html">📊 Visão Geral</a>
+        <a href="agenda.html">📅 Agenda</a>
+        <a href="clientes.html">👥 Clientes</a>
+        <a href="orcamentos.html" class="active">💰 Orçamentos</a>
+        <a href="bate-papo.html">💬 Chat IA</a>
+        <a href="login.html" style="margin-top: auto; color: #ef4444;">Sair</a>
+    </aside>
+
+    <main>
+        <header>
+            <h1>Orçamentos Recentes </h1>
+            <button style="background: var(--primary); color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 8px; font-weight: 600; cursor: pointer;">+ Novo Orçamento</button>
+        </header>
+
+        <div class="quote-grid">
+            <div class="quote-card">
+                <div class="quote-header">
+                    <span class="quote-id">#ORC-2024-001</span>
+                    <span style="color: #166534; font-size: 0.8rem; font-weight: 600;">Aprovado</span>
+                </div>
+                <div class="quote-client">Maria Oliveira</div>
+                <div class="quote-value">R$ 2.500,00</div>
+                <div class="quote-date">Criado em: 20/08/2024</div>
+            </div>
+            
+            <div class="quote-card">
+                <div class="quote-header">
+                    <span class="quote-id">#ORC-2024-002</span>
+                    <span style="color: #ca8a04; font-size: 0.8rem; font-weight: 600;">Pendente</span>
+                </div>
+                <div class="quote-client">João Santos</div>
+                <div class="quote-value">R$ 1.800,00</div>
+                <div class="quote-date">Criado em: 22/08/2024</div>
+            </div>
+            
+            <div class="quote-card">
+                <div class="quote-header">
+                    <span class="quote-id">#ORC-2024-003</span>
+                    <span style="color: #dc2626; font-size: 0.8rem; font-weight: 600;">Rejeitado</span>
+                </div>
+                <div class="quote-client">Ana Costa</div>
+                <div class="quote-value">R
